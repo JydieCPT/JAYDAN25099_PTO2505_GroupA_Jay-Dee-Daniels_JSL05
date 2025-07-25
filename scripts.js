@@ -1,19 +1,23 @@
-// =========================
-// State & Persistence
-// =========================
+/* =========================
+   State & Persistence
+   ========================= */
 
 const STORAGE_KEY = 'kanban.tasks';
 let tasks = loadTasks();
 
 function loadTasks() {
   const saved = localStorage.getItem(STORAGE_KEY);
-  return saved ? JSON.parse(saved) : [
+  if (saved) return JSON.parse(saved);
+  // Seed with what we see in the screenshots
+  return [
     { id: uid(), title: 'Launch Epic Career 🚀', description: '', status: 'todo' },
     { id: uid(), title: 'Conquer React 💜', description: '', status: 'todo' },
     { id: uid(), title: 'Understand Databases 🧠', description: '', status: 'todo' },
     { id: uid(), title: 'Crush Frameworks 📚', description: '', status: 'todo' },
+
     { id: uid(), title: 'Master JavaScript 💛', description: '', status: 'doing' },
     { id: uid(), title: 'Never Give Up 🏆', description: '', status: 'doing' },
+
     { id: uid(), title: 'Explore ES6 Features 🚀', description: '', status: 'done' },
     { id: uid(), title: 'Have fun🤯', description: '', status: 'done' }
   ];
@@ -23,10 +27,9 @@ function saveTasks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }
 
-// =========================
-// Elements
-// =========================
-
+/* =========================
+   Elements
+   ========================= */
 const addTaskBtn = document.getElementById('addTaskBtn');
 const modal = document.getElementById('taskModal');
 const modalOverlay = document.getElementById('modalOverlay');
@@ -34,6 +37,7 @@ const closeModalBtn = document.getElementById('closeModalBtn');
 const taskForm = document.getElementById('taskForm');
 
 const themeSwitch = document.getElementById('themeSwitch');
+
 const hideSidebarBtn = document.getElementById('hideSidebarBtn');
 const showSidebarBtn = document.getElementById('showSidebarBtn');
 const sidebar = document.getElementById('sidebar');
@@ -49,31 +53,30 @@ const counters = {
   done: document.getElementById('count-done')
 };
 
-// =========================
-// Init
-// =========================
-
+/* =========================
+   Init
+   ========================= */
 document.addEventListener('DOMContentLoaded', () => {
+  // Theme
   const storedTheme = localStorage.getItem('kanban.theme') || 'light';
   document.documentElement.setAttribute('data-theme', storedTheme);
   themeSwitch.checked = storedTheme === 'dark';
+
   renderAll();
 });
 
-// =========================
-// Theme Toggle
-// =========================
-
+/* =========================
+   Theme Toggle
+   ========================= */
 themeSwitch.addEventListener('change', () => {
   const theme = themeSwitch.checked ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('kanban.theme', theme);
 });
 
-// =========================
-// Sidebar Toggle
-// =========================
-
+/* =========================
+   Sidebar Toggle
+   ========================= */
 hideSidebarBtn.addEventListener('click', () => {
   sidebar.classList.add('hidden');
   showSidebarBtn.hidden = false;
@@ -83,10 +86,30 @@ showSidebarBtn.addEventListener('click', () => {
   showSidebarBtn.hidden = true;
 });
 
-// =========================
-// Create Task
-// =========================
+/* =========================
+   Modal open/close
+   ========================= */
+addTaskBtn.addEventListener('click', openModal);
+closeModalBtn.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', closeModal);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
 
+function openModal() {
+  taskForm.reset();
+  modal.hidden = false;
+  modalOverlay.hidden = false;
+  document.getElementById('title').focus();
+}
+function closeModal() {
+  modal.hidden = true;
+  modalOverlay.hidden = true;
+}
+
+/* =========================
+   Create Task
+   ========================= */
 taskForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if (!taskForm.reportValidity()) return;
@@ -101,15 +124,16 @@ taskForm.addEventListener('submit', (e) => {
   tasks.push(newTask);
   saveTasks();
   renderAll();
-  closeModal(); // this will now come from modal.js
+  closeModal();
 });
 
-// =========================
-// Render
-// =========================
-
+/* =========================
+   Render
+   ========================= */
 function renderAll() {
+  // clear
   Object.values(columns).forEach(col => col.innerHTML = '');
+
   const counts = { todo: 0, doing: 0, done: 0 };
 
   tasks.forEach(task => {
@@ -139,10 +163,9 @@ function createTaskElement(task) {
   return div;
 }
 
-// =========================
-// Drag & Drop
-// =========================
-
+/* =========================
+   Drag & Drop
+   ========================= */
 function setUpDnD() {
   const taskEls = document.querySelectorAll('.task');
   const dropZones = document.querySelectorAll('.tasks');
@@ -185,10 +208,9 @@ function handleDrop(e) {
   }
 }
 
-// =========================
-// Utils
-// =========================
-
+/* =========================
+   Utils
+   ========================= */
 function uid() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
