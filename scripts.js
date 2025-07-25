@@ -83,3 +83,24 @@ showSidebarBtn.addEventListener('click', () => {
   showSidebarBtn.hidden = true;
 });
 
+// =========================
+// Create Task
+// =========================
+
+taskForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!taskForm.reportValidity()) return;
+
+  const formData = new FormData(taskForm);
+  const newTask = {
+    id: uid(),
+    title: formData.get('title').trim(),
+    description: formData.get('description').trim(),
+    status: formData.get('status')
+  };
+  tasks.push(newTask);
+  saveTasks();
+  renderAll();
+  closeModal(); // this will now come from modal.js
+});
+
