@@ -49,3 +49,24 @@ const counters = {
   done: document.getElementById('count-done')
 };
 
+// =========================
+// Init
+// =========================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const storedTheme = localStorage.getItem('kanban.theme') || 'light';
+  document.documentElement.setAttribute('data-theme', storedTheme);
+  themeSwitch.checked = storedTheme === 'dark';
+  renderAll();
+});
+
+// =========================
+// Theme Toggle
+// =========================
+
+themeSwitch.addEventListener('change', () => {
+  const theme = themeSwitch.checked ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('kanban.theme', theme);
+});
+
