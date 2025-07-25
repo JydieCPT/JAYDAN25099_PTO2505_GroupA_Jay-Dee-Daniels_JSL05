@@ -60,25 +60,109 @@ body {
   gap: 24px;
 }
 
-.brand { ... }
-.logo-bars { ... }
-.boards-title { ... }
-.board { ... }
-.board.active { ... }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
 
-.bottom-controls { ... }
-.theme-toggle { ... }
+.logo-bars {
+  letter-spacing: 2px;
+  color: var(--primary);
+}
 
-.switch { ... }
+.boards-title {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.board {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  padding: 12px 14px;
+  text-align: left;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.board.active {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.bottom-controls {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--bg);
+  border-radius: 6px;
+  padding: 10px 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
 .switch input { display: none; }
-.slider { ... }
-.slider:before { ... }
-input:checked + .slider:before { ... }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--primary);
+  transition: .2s;
+  border-radius: 999px;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  top: 2px;
+  background: var(--primary-contrast);
+  transition: .2s;
+  border-radius: 50%;
+}
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
 
 .hide-sidebar,
-.show-sidebar { ... }
+.show-sidebar {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 8px 0;
+}
 
-.show-sidebar { ... }
+.show-sidebar {
+  position: fixed;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 20;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
 
 /* ------------ Main ------------ */
 .main {
@@ -119,13 +203,31 @@ input:checked + .slider:before { ... }
   min-height: calc(100vh - 88px);
 }
 
-.column-header { ... }
-.dot { ... }
-.dot-blue { ... }
-.dot-purple { ... }
-.dot-green { ... }
+.column-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  letter-spacing: 1.2px;
+  font-size: 0.75rem;
+  margin-bottom: 16px;
+}
 
-.tasks { ... }
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dot-blue { background: var(--blue); }
+.dot-purple { background: var(--purple); }
+.dot-green { background: var(--green); }
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100px;
+}
 
 .task {
   background: var(--surface-elevated);
@@ -136,9 +238,20 @@ input:checked + .slider:before { ... }
   cursor: grab;
 }
 .task:active { cursor: grabbing; }
-.task-title { ... }
-.task.dragging { opacity: .5; }
-.tasks.drag-over { ... }
+
+.task-title {
+  font-weight: 600;
+}
+
+.task.dragging {
+  opacity: .5;
+}
+
+.tasks.drag-over {
+  outline: 2px dashed var(--primary);
+  border-radius: 6px;
+  padding: 10px;
+}
 
 /* ------------ Modal ------------ */
 .modal-overlay {
@@ -163,21 +276,55 @@ input:checked + .slider:before { ... }
   padding: 24px;
 }
 
-.modal-header { ... }
-.close { ... }
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
 
-.field { ... }
-.field .label { ... }
+.close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--text-muted);
+}
 
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.field .label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
 input[type="text"],
 textarea,
-select { ... }
-
+select {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
 textarea { min-height: 120px; resize: vertical; }
 
-.select-wrapper { ... }
-.select-wrapper select { ... }
-.select-wrapper .chevron { ... }
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper select { width: 100%; appearance: none; }
+.select-wrapper .chevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
 
 /* ------------ Utilities ------------ */
 .hidden { display: none !important; }
