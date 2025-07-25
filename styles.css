@@ -179,3 +179,10 @@ textarea { min-height: 120px; resize: vertical; }
 .select-wrapper select { ... }
 .select-wrapper .chevron { ... }
 
+/* ------------ Utilities ------------ */
+.hidden { display: none !important; }
+
+/* ------------ Responsive ------------ */
+@media (max-width: 900px) {
+  .columns { grid-template-columns: 1fr; }
+}
