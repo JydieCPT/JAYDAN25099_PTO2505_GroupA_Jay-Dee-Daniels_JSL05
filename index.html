@@ -39,3 +39,41 @@
 <button class="show-sidebar" id="showSidebarBtn" hidden>
   ☰ Show Sidebar
 </button>
+
+  <main class="main">
+  <header class="header">
+    <h1 id="boardTitle">Launch Career</h1>
+    <button class="btn primary" id="addTaskBtn">+ Add New Task</button>
+  </header>
+
+  <section class="columns">
+    <div class="column" data-status="todo">
+      <header class="column-header">
+        <span class="dot dot-blue"></span>
+        <span class="title">TODO</span>
+        <span class="count" id="count-todo">(0)</span>
+      </header>
+      <div class="tasks" id="col-todo"></div>
+    </div>
+
+    <div class="column" data-status="doing">
+      <header class="column-header">
+        <span class="dot dot-purple"></span>
+        <span class="title">DOING</span>
+        <span class="count" id="count-doing">(0)</span>
+      </header>
+      <div class="tasks" id="col-doing"></div>
+    </div>
+
+    <div class="column" data-status="done">
+      <header class="column-header">
+        <span class="dot dot-green"></span>
+        <span class="title">DONE</span>
+        <span class="count" id="count-done">(0)</span>
+      </header>
+      <div class="tasks" id="col-done"></div>
+    </div>
+  </section>
+</main>
+
+  
