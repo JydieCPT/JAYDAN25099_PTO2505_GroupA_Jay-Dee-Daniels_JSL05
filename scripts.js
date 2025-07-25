@@ -22,3 +22,30 @@ function loadTasks() {
 function saveTasks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }
+
+// =========================
+// Elements
+// =========================
+
+const addTaskBtn = document.getElementById('addTaskBtn');
+const modal = document.getElementById('taskModal');
+const modalOverlay = document.getElementById('modalOverlay');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const taskForm = document.getElementById('taskForm');
+
+const themeSwitch = document.getElementById('themeSwitch');
+const hideSidebarBtn = document.getElementById('hideSidebarBtn');
+const showSidebarBtn = document.getElementById('showSidebarBtn');
+const sidebar = document.getElementById('sidebar');
+
+const columns = {
+  todo: document.getElementById('col-todo'),
+  doing: document.getElementById('col-doing'),
+  done: document.getElementById('col-done')
+};
+const counters = {
+  todo: document.getElementById('count-todo'),
+  doing: document.getElementById('count-doing'),
+  done: document.getElementById('count-done')
+};
+
