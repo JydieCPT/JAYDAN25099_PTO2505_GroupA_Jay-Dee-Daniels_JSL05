@@ -139,3 +139,48 @@ function createTaskElement(task) {
   return div;
 }
 
+// =========================
+// Drag & Drop
+// =========================
+
+function setUpDnD() {
+  const taskEls = document.querySelectorAll('.task');
+  const dropZones = document.querySelectorAll('.tasks');
+
+  taskEls.forEach(task => {
+    task.addEventListener('dragstart', handleDragStart);
+    task.addEventListener('dragend', handleDragEnd);
+  });
+
+  dropZones.forEach(zone => {
+    zone.addEventListener('dragover', handleDragOver);
+    zone.addEventListener('drop', handleDrop);
+    zone.addEventListener('dragenter', () => zone.classList.add('drag-over'));
+    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  });
+}
+
+let draggedId = null;
+
+function handleDragStart(e) {
+  draggedId = this.dataset.id;
+  this.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+}
+function handleDragEnd() {
+  this.classList.remove('dragging');
+  draggedId = null;
+}
+function handleDragOver(e) {
+  e.preventDefault();
+}
+function handleDrop(e) {
+  e.preventDefault();
+  const status = this.parentElement.dataset.status;
+  const idx = tasks.findIndex(t => String(t.id) === String(draggedId));
+  if (idx !== -1) {
+    tasks[idx].status = status;
+    saveTasks();
+    renderAll();
+  }
+}
