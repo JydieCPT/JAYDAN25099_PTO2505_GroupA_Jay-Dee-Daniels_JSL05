@@ -70,3 +70,16 @@ themeSwitch.addEventListener('change', () => {
   localStorage.setItem('kanban.theme', theme);
 });
 
+// =========================
+// Sidebar Toggle
+// =========================
+
+hideSidebarBtn.addEventListener('click', () => {
+  sidebar.classList.add('hidden');
+  showSidebarBtn.hidden = false;
+});
+showSidebarBtn.addEventListener('click', () => {
+  sidebar.classList.remove('hidden');
+  showSidebarBtn.hidden = true;
+});
+
