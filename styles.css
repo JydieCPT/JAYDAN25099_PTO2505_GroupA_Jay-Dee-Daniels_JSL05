@@ -111,3 +111,32 @@ input:checked + .slider:before { ... }
 }
 .btn.block { width: 100%; }
 
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding: 24px;
+  min-height: calc(100vh - 88px);
+}
+
+.column-header { ... }
+.dot { ... }
+.dot-blue { ... }
+.dot-purple { ... }
+.dot-green { ... }
+
+.tasks { ... }
+
+.task {
+  background: var(--surface-elevated);
+  color: var(--text);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  padding: 14px 12px;
+  cursor: grab;
+}
+.task:active { cursor: grabbing; }
+.task-title { ... }
+.task.dragging { opacity: .5; }
+.tasks.drag-over { ... }
+
