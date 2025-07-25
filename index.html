@@ -6,3 +6,36 @@
   <title>Kanban</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
+  <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <span class="logo-bars">|||</span>
+    <span class="brand-name">kanban</span>
+  </div>
+
+  <div class="boards">
+    <h4 class="boards-title">ALL BOARDS (1)</h4>
+    <button class="board active" id="current-board-btn">
+      Launch Career
+    </button>
+  </div>
+
+  <div class="bottom-controls">
+    <div class="theme-toggle">
+      <span class="sun">☀️</span>
+      <label class="switch">
+        <input type="checkbox" id="themeSwitch" />
+        <span class="slider"></span>
+      </label>
+      <span class="moon">🌑</span>
+    </div>
+
+    <button class="hide-sidebar" id="hideSidebarBtn">
+      🚫 Hide Sidebar
+    </button>
+  </div>
+</aside>
+
+<button class="show-sidebar" id="showSidebarBtn" hidden>
+  ☰ Show Sidebar
+</button>
