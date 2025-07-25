@@ -49,3 +49,34 @@ body {
   display: flex;
 }
 
+/* ------------ Sidebar ------------ */
+.sidebar {
+  width: 260px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.brand { ... }
+.logo-bars { ... }
+.boards-title { ... }
+.board { ... }
+.board.active { ... }
+
+.bottom-controls { ... }
+.theme-toggle { ... }
+
+.switch { ... }
+.switch input { display: none; }
+.slider { ... }
+.slider:before { ... }
+input:checked + .slider:before { ... }
+
+.hide-sidebar,
+.show-sidebar { ... }
+
+.show-sidebar { ... }
+
