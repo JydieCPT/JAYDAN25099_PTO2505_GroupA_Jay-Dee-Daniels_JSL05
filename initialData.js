@@ -1,3 +1,18 @@
+/**
+ * @typedef {Object} Task
+ * @property {number} id - Unique identifier for the task
+ * @property {string} title - Title of the task
+ * @property {string} description - Description or details of the task
+ * @property {'todo' | 'doing' | 'done'} status - Current status of the task
+ * @property {string} board - Board or category this task belongs to
+ */
+
+/**
+ * Array of predefined tasks used to seed the Kanban board on first load.
+ * These tasks serve as initial data for the "Launch Career" board.
+ * 
+ * @type {Task[]}
+ */
 export const initialTasks = [
   {
     id: 1,
@@ -20,7 +35,6 @@ export const initialTasks = [
     status: "doing",
     board: "Launch Career",
   },
-
   {
     id: 11,
     title: "Learn Data Structures and Algorithms 📚",
