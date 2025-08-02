@@ -1,92 +1,67 @@
-# JSL05 Challenge – Kanban Board with Persistence & Drag-and-Drop
+📌 JSL05 – Kanban Task Board
 
-## Overview
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+📖 Description of Project
 
-This solution builds upon JSL04 by adding powerful new features to the Kanban task board:
+JSL05 is a single-board Kanban task management application built with vanilla JavaScript, HTML, and CSS. It allows users to create, move, and persist tasks using a responsive UI. Key enhancements over the previous challenge (JSL04) include drag-and-drop functionality, persistent localStorage, and user-friendly modals for task entry. The app is also mobile-responsive and includes a dark/light theme toggle as well as a collapsible sidebar for a clean and focused user experience.
 
-- Fully **data-driven rendering** of tasks and columns
-- A reusable **modal form** for adding new tasks
-- Persistent state using **`localStorage`**
-- Responsive **drag-and-drop** across columns
-- A **light/dark theme toggle**
-- A collapsible **sidebar navigation**
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🛠 List of Technologies
 
-The result is a highly interactive, single-board Kanban application with maintainable architecture and clean UX.
+HTML5 – Semantic structure of the application
 
----
+CSS3 – Custom styling including responsive design and themes
 
-## Learning Goals
+JavaScript (ES6 Modules) – App logic, state management, UI interaction
 
-By completing JSL05, you will:
+localStorage API – For persisting tasks and theme preferences
 
-- Persist application state using `localStorage`
-- Build modular UI logic with vanilla JavaScript
-- Enable keyboard/mouse interaction with modal dialogs
-- Implement drag-and-drop functionality with the DOM API
-- Write reusable functions for UI creation and interaction
-- Maintain user preferences (e.g. theme) between sessions
+Drag-and-Drop DOM API – For interactive task movement between columns
 
----
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+✨ List of Features
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🔧 Core Functionality
 
-## File Structure
+Task Creation Modal
+Easily add tasks by entering a title, description, and selecting a status (To Do, Doing, Done).
 
-├── index.html # App shell: sidebar, board layout, modal
-├── styles.css # Complete styling for light/dark themes
-├── initialData.js # Initial task dataset (used if no localStorage exists)
-├── scripts.js # State, rendering, modal, drag/drop, event handling
-└── README.md # ← you are here
+Dynamic Rendering
+Tasks are rendered based entirely on JavaScript data, not hardcoded HTML.
 
+Drag-and-Drop
+Move tasks between columns using intuitive drag-and-drop interaction.
 
----
+Persistent Storage
+Task data and theme preference are saved to localStorage and reloaded on page refresh.
 
-## Key Features
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🎨 UI Enhancements
 
-| Feature                     | Description                                                       |
-|----------------------------|-------------------------------------------------------------------|
-| Dynamic Task Board         | Tasks are created and rendered based on JavaScript data only      |
-| Add New Task               | Modal with form to enter title, description, and status           |
-| Drag-and-Drop              | Move tasks between columns with smooth interaction                |
-| Persistent Storage         | Tasks and theme are stored in `localStorage`                      |
-| Theme Toggle               | Light/dark mode toggle saved per user                             |
-| Hideable Sidebar           | Collapse and reopen the sidebar to maximize space                 |
-| Mobile Responsive          | Stacks columns vertically under 900px width                       |
+Theme Toggle
+Switch between light and dark mode using a toggle switch in the sidebar.
 
----
+Collapsible Sidebar
+Hide or show the sidebar for a distraction-free experience on smaller screens.
 
-## JavaScript Functions at a Glance
+Mobile Responsiveness
+Layout adapts for smaller viewports by stacking columns vertically.
 
-| Function             | Responsibility                                                           |
-|----------------------|---------------------------------------------------------------------------|
-| `uid()`              | Generates a pseudo-unique ID for new tasks                                |
-| `loadTasks()`        | Loads tasks from localStorage or falls back to `initialTasks`            |
-| `saveTasks()`        | Saves the current task list to localStorage                              |
-| `renderAll()`        | Clears and re-renders all columns with the current task state            |
-| `createTaskElement()`| Creates and returns a DOM element for an individual task card            |
-| `openModal()`        | Opens and resets the task modal for a new entry                          |
-| `closeModal()`       | Closes the modal overlay and clears focus                                |
-| `setUpDnD()`         | Wires up drag-and-drop listeners to task elements and drop zones         |
-| `handleDrop()`       | Moves task to new column and updates state + storage                     |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🧪 Developer Utilities
 
----
+Reset Helpers via Console
+Use the browser console to quickly reset tasks or theme:
 
-## Running the Solution
+localStorage.removeItem('kanban.tasks');
+localStorage.removeItem('kanban.theme');
+location.reload();
 
-1. **Clone or download** the repo
-2. Open `index.html` in a modern browser (no server required)
-3. Try these:
-   - Add a new task using the `+ Add New Task` button
-   - Drag tasks between columns (To Do, Doing, Done)
-   - Refresh the page — your tasks persist!
-   - Toggle dark mode 🌙 in the sidebar
-   - Click “Hide Sidebar” and use the floating “☰ Show Sidebar” button
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+⚙️ Setup Instructions
 
----
-
-## Tips & Testing
-
-- Press `Esc` to close the modal
-- Use the browser’s DevTools → Console:
-  ```js
-  localStorage.removeItem('kanban.tasks'); // Reset all tasks
-  localStorage.removeItem('kanban.theme'); // Reset theme
-  location.reload(); // Refresh the app
+* Download Folder.
+* Download Zip on GitHub.
+* Save on Desktop.
+* Open Folder on VS Code.
+* Go Live Onto Browser.
