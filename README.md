@@ -54,7 +54,9 @@ Reset Helpers via Console
 Use the browser console to quickly reset tasks or theme:
 
 localStorage.removeItem('kanban.tasks');
+
 localStorage.removeItem('kanban.theme');
+
 location.reload();
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
